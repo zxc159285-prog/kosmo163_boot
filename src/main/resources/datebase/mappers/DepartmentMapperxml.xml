@@ -12,4 +12,8 @@
   SELECT * FROM TB_DEPARTMENT
   </select>
   
+  <select id="detail" parameterType="java.lang.String" resultType="com.karina.app.departments.DepartmentDTO">
+  SELECT * FROM TB_DEPARTMENT WHERE DEPARTMENT_NO =#{num}
+  </select>
+  
   </mapper>

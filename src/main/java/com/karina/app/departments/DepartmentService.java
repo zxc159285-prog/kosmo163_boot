@@ -15,4 +15,8 @@ public class DepartmentService {
 		return departmentDAO.list();
 	}
 	
+	public DepartmentDTO detail(String num) {
+		return departmentDAO.detail(num);
+	}
+	
 }

@@ -21,6 +21,11 @@ public class DepartmentDAO {
 		return session.selectList(NAMESPACE+"list"); //결과물이 여러개면 리스트 디테일페이지처럼 결과물이 하나면 셀렉트원
 	}
 	
+	public DepartmentDTO detail(String num) {
+		
+		return session.selectOne(NAMESPACE+"detail",num);
+	}
+	
 	public void create() {
 		session.insert(NAMESPACE+"create");
 	}
