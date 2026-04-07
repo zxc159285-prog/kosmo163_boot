@@ -1,0 +1,73 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="jakarta.tags.core"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<c:import url="/WEB-INF/views/temp/head_css.jsp"></c:import>
+</head>
+<body id="page-top">
+	<div id="wrapper">
+		<c:import url="/WEB-INF/views/temp/sidebar.jsp"></c:import>
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<div id="content">
+				<c:import url="/WEB-INF/views/temp/topbar.jsp"></c:import>
+				<div class="container-fluid">
+
+					<!-- Page Heading -->
+					<h1 class="h3 mb-4 text-gray-800">학과 목록</h1>
+					<!-- 내용 담는공간 -->
+					<div class="row justify-content-center">
+					<div class="col-6">
+						<table class="table table-dark">
+							<thead>  <!-- 제목은 힌번 나오면 됨 -->
+								<tr>
+									<th>학과명</th>
+									<th>계열</th>
+									<th>개설여부</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<c:forEach items="${list}" var="d">  <!-- 포이치 반복문 돌리는것 리스트에서꺼낸걸 d라는변수에 담자-->
+								
+									<tr>
+										<td><a href="./detail?num=${d.departmentNo}">${d.departmentName}</a></td>
+										<td>${d.category}</td>
+										
+									<c:if test="${d.openYn eq'Y'}">
+										<td> OPEN</td>
+										</c:if>
+										
+										<c:if test="${d.openYn eq 'N'}">
+										<td> Close</td>
+										</c:if>
+									</tr>
+									
+								</c:forEach>
+							</tbody>
+						</table>
+						
+						<div>
+							<a href ="./create">학과등록</a>
+						</div>
+					</div>
+					</div>
+					<!-- 내용 끝 -->
+				</div>
+				<!-- End Page Container-fluid-->
+					
+			</div>
+			<!-- End Page Content -->
+			<c:import url="/WEB-INF/views/temp/footer.jsp"></c:import>
+		</div>
+		<!-- End Content-wrapper -->
+	</div>
+	<!-- End wrapper -->
+	<c:import url="/WEB-INF/views/temp/footer_script.jsp"></c:import>
+</body>
+</html>

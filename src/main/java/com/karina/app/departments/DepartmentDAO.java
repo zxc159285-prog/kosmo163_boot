@@ -26,12 +26,17 @@ public class DepartmentDAO {
 		return session.selectOne(NAMESPACE+"detail",num);
 	}
 	
-	public void create() {
-		session.insert(NAMESPACE+"create");
+	public int create(DepartmentDTO departmentDTO) {
+		return session.insert(NAMESPACE+"create",departmentDTO);
 	}
 	
-	public void update() {
-		session.update(NAMESPACE+"update");
+	public int delete(DepartmentDTO departmentDTO) {
+		return session.delete(NAMESPACE+"delete",departmentDTO);
 	}
+	
+	public int update(DepartmentDTO departmentDTO) {
+		return session.update(NAMESPACE+"update",departmentDTO);
+	}
+	
 
 }
