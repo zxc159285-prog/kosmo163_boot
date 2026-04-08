@@ -11,16 +11,16 @@
   <select id="list" resultType="com.karina.app.departments.DepartmentDTO">
   SELECT * FROM TB_DEPARTMENT
   </select>
-  
+   <!-- 파라미터타입을 써야 #{} 사용가능 -->
   <select id="detail" parameterType="java.lang.String" resultType="com.karina.app.departments.DepartmentDTO">
   <!-- String,primitiveType 은 DAO에서 보낸 변수명을 #{변수명을 작성} -->
   SELECT * FROM TB_DEPARTMENT WHERE DEPARTMENT_NO =#{num}
   </select>
   
-  <!-- insert update delete는 resultType이 존재하지않음 결과물이 숫자(int)로 리턴을함 -->
+  <!-- insert update delete는 resultType이 존재하지않음 결과물이 성공한 갯수만큼 숫자(int)로 리턴을함 -->
   <insert id="create" parameterType="com.karina.app.departments.DepartmentDTO">
   INSERT INTO TB_DEPARTMENT 
-  <!-- Bean의 Getter의 이름을 #{}에 작성 -->
+  <!-- Bean(DTO)의 Getter의 이름을 #{}에 작성 -->
   VALUES (#{departmentNo},#{departmentName},#{category},#{openYn},#{capacity})
   </insert>
   
