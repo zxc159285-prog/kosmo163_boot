@@ -5,30 +5,30 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <!-- 네임스페이스에 얘를 사용할 클래스명을 풀패키지명으로 작성한다 FQDN(정규화된 도메인이름) -->
-  <mapper namespace="com.karina.app.departments.DepartmentDAO">
+  <mapper namespace="com.karina.app.departments.DepartmentMapper">
   <!-- 쿼리태그 id에 통상적으로 DAO에서 사용할 메서드명을 적는다 -->
   <!-- 컬럼명과 resultType의 Bean의 Setter이름이 같은걸 찾아서 대입 -->
-  <select id="list" resultType="com.karina.app.departments.DepartmentDTO">
+  <select id="list" resultType="DepartmentDTO">
   SELECT * FROM TB_DEPARTMENT
   </select>
    <!-- 파라미터타입을 써야 #{} 사용가능 -->
-  <select id="detail" parameterType="java.lang.String" resultType="com.karina.app.departments.DepartmentDTO">
+  <select id="detail" parameterType="DepartmentDTO" resultType="DepartmentDTO">
   <!-- String,primitiveType 은 DAO에서 보낸 변수명을 #{변수명을 작성} -->
-  SELECT * FROM TB_DEPARTMENT WHERE DEPARTMENT_NO =#{num}
+  SELECT * FROM TB_DEPARTMENT WHERE DEPARTMENT_NO =#{departmentNo}
   </select>
   
   <!-- insert update delete는 resultType이 존재하지않음 결과물이 성공한 갯수만큼 숫자(int)로 리턴을함 -->
-  <insert id="create" parameterType="com.karina.app.departments.DepartmentDTO">
+  <insert id="create" parameterType="DepartmentDTO">
   INSERT INTO TB_DEPARTMENT 
   <!-- Bean(DTO)의 Getter의 이름을 #{}에 작성 -->
   VALUES (#{departmentNo},#{departmentName},#{category},#{openYn},#{capacity})
   </insert>
   
-  <delete id="delete" parameterType="com.karina.app.departments.DepartmentDTO">
+  <delete id="delete" parameterType="DepartmentDTO">
   DELETE TB_DEPARTMENT WHERE DEPARTMENT_NO=#{departmentNo}
   </delete>
   
-  <update id="update" parameterType="com.karina.app.departments.DepartmentDTO">
+  <update id="update" parameterType="DepartmentDTO">
   UPDATE TB_DEPARTMENT 
   	SET
 	  	DEPARTMENT_NAME=#{departmentName},

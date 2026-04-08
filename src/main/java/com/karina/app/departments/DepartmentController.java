@@ -18,7 +18,7 @@ public class DepartmentController {
 	private DepartmentService departmentService;
 	
 	@GetMapping("list")
-	public String list(Model model) {
+	public String list(Model model) throws Exception {
 		List<DepartmentDTO> ar = departmentService.list();
 		
 		//request와 비슷한 역할, 스프링이 제공함 모델 인터페이스가 임포트되야함
@@ -26,8 +26,8 @@ public class DepartmentController {
 		return "department/list";
 	}
 	@GetMapping("detail")
-	public void detail(@RequestParam(name="num") String num,Model model) {
-		DepartmentDTO departmentDTO=departmentService.detail(num);
+	public void detail(DepartmentDTO departmentDTO,Model model) throws Exception {
+		departmentDTO=departmentService.detail(departmentDTO);
 		
 		
 		model.addAttribute("detail", departmentDTO);
@@ -36,8 +36,8 @@ public class DepartmentController {
 	@GetMapping("create")//url정보와 jsp의 경로가 같다면 void로 리턴한다
 	public void create() {}
 	
-	@PostMapping("create") //원래 포스트매핑으로해야함
-	public String create(DepartmentDTO departmentDTO) {
+	@PostMapping("create") 
+	public String create(DepartmentDTO departmentDTO) throws Exception {
 		int result = departmentService.create(departmentDTO);
 		
 		
@@ -46,21 +46,21 @@ public class DepartmentController {
 	}
 	
 	@PostMapping("delete")
-	public String delete(DepartmentDTO departmentDTO) {
+	public String delete(DepartmentDTO departmentDTO) throws Exception {
 		int result = departmentService.delete(departmentDTO);
 		
 		
 		return "redirect:./list";
 	}
 	@GetMapping("update")
-	public void update(DepartmentDTO departmentDTO,Model model) {
-		departmentDTO = departmentService.detail(departmentDTO.getDepartmentNo());
+	public void update(DepartmentDTO departmentDTO,Model model) throws Exception {
+		departmentDTO = departmentService.detail(departmentDTO);
 		
 		model.addAttribute("update",departmentDTO);
 	}
 	
 	@PostMapping("update")
-	public String update(DepartmentDTO departmentDTO) {
+	public String update(DepartmentDTO departmentDTO) throws Exception {
 		
 		
 		int result = departmentService.update(departmentDTO);
