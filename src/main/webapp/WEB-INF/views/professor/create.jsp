@@ -36,7 +36,10 @@
 						    <label for="professorSsn">교수 주민등록번호</label>
 						    <input type="text" name="professorSsn" class="form-control" id="professorSsn">
 						  </div>
-						  
+						  <div class="form-group">
+						    <label for="professorAddress">교수 주소</label>
+						    <input type="text" name="professorAddress" class="form-control" id="professorAddress">
+						  </div>
 						  <div class="form-group">
 						    <label for="departmentNo">부서 번호</label>
 						    <input type="text" name="departmentNo" class="form-control" id="departmentNo">
