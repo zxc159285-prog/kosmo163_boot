@@ -13,52 +13,48 @@
 	<div id="wrapper">
 		<c:import url="/WEB-INF/views/temp/sidebar.jsp"></c:import>
 		<div id="content-wrapper" class="d-flex flex-column">
-			
+
 			<div id="content">
 				<c:import url="/WEB-INF/views/temp/topbar.jsp"></c:import>
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">교수 상세 정보</h1>
+					<h1 class="h3 mb-4 text-gray-800">공지사항</h1>
+					<!-- 내용 담는공간 -->
 					<div class="row justify-content-center">
-					<div class="col-6">
+					<div class="col-8">
 						<table class="table table-dark">
-							<thead>
-							<tr>
-							<th>교수 번호</th>
-							<th>교수 이름</th>
-							<th>교수 주민등록번호</th>
-							<th>교수 집 주소</th>
-							<th>부서 번호</th>
-							</tr>
+							<thead>  <!-- 제목은 힌번 나오면 됨 -->
+								<tr>
+									<th>공지번호</th>
+									<th>제목</th>
+									<th>작성일</th>
+								</tr>
 							</thead>
 							
 							<tbody>
-							
-								<tr>
-									<td>${detail.professorNo}</td>
-									<td>${detail.professorName}</td>
-									<td>${detail.professorSsn}</td>									
-									<td>${detail.professorAddress}</td>
-									<td>${detail.departmentNo}</td>
-								</tr>
+								<c:forEach items="${list}" var="d">  <!-- 포이치 반복문 돌리는것 리스트에서꺼낸걸 d라는변수에 담자-->
 								
+									<tr>
+										<td>${d.noticeNo}</td>
+										<td><a href="./detail?NoticeNo=${d.noticeNo}">${d.title}</a></td>
+										<td>${d.createdate}</td>
+									
+									</tr>
+									
+								</c:forEach>
 							</tbody>
 						</table>
+						
+						<div>
+							<a href ="./create">공지작성</a>
 						</div>
 					</div>
-					
-					<div ><a class="btn btn-info" href ="./update?professorNo=${detail.professorNo}">교수수정</a>
-						<form action="./delete" method="post">
-						<input type="hidden" name="professorNo" value="${detail.professorNo}">
-						
-						<button class="btn btn-warning" type="submit">삭제</button>
-					
-						</form>
 					</div>
-
+					<!-- 내용 끝 -->
 				</div>
 				<!-- End Page Container-fluid-->
+					
 			</div>
 			<!-- End Page Content -->
 			<c:import url="/WEB-INF/views/temp/footer.jsp"></c:import>

@@ -29,5 +29,6 @@
   	DELETE FROM TB_PROFESSOR
   	WHERE PROFESSOR_NO=#{professorNo}
   	</delete>
+  	
   
   </mapper>
