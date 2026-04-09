@@ -21,7 +21,7 @@
 					<!-- Page Heading -->
 					<h1 class="h3 mb-4 text-gray-800">교수 수정하기</h1>
 					<div>
-					<form action="./create" method="post">
+					<form action="./update" method="post">
 						  <div class="form-group">
 						    <label hidden for="professorNo">교수 번호</label>
 						    <input type="text" name="professorNo" value="${update.professorNo}" class="form-control" id="professorNo" readonly>
@@ -30,6 +30,11 @@
 						  <div class="form-group">
 						    <label for="professorName">교수 이름</label>
 						    <input type="text" name="professorName" value="${update.professorName}" class="form-control" id="professorName">
+						  </div>
+						  
+						  <div class="form-group">
+						    <label for="professorAddress">교수 주소</label>
+						    <input type="text" name="professorAddress"  value="${update.professorAddress}" class="form-control" id="professorAddress">
 						  </div>
 						  
 						  <div class="form-group">
