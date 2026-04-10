@@ -22,8 +22,8 @@
 					<h1 class="h3 mb-4 text-gray-800">교수 상세 정보</h1>
 					<div class="row justify-content-center">
 					<div class="col-6">
-						<table class="table table-dark">
-							<thead>
+						<table class="table">
+							<thead class="thead-dark">
 							<tr>
 							<th>교수 번호</th>
 							<th>교수 이름</th>

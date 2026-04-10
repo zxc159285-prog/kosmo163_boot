@@ -23,8 +23,8 @@
 					<!-- 내용 담는공간 -->
 					<div class="row justify-content-center">
 					<div class="col-8">
-						<table class="table table-dark">
-							<thead>  <!-- 제목은 힌번 나오면 됨 -->
+						<table class="table">
+							<thead class="thead-dark">  <!-- 제목은 힌번 나오면 됨 -->
 								<tr>
 									<th>공지번호</th>
 									<th>제목</th>

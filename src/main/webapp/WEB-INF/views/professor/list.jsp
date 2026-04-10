@@ -23,8 +23,8 @@
 					<!-- 내용 담는공간 -->
 					<div class="row justify-content-center">
 					<div class="col-6">
-						<table class="table table-dark">
-							<thead>  <!-- 제목은 힌번 나오면 됨 -->
+						<table class="table">
+							<thead class="thead-dark">  <!-- 제목은 힌번 나오면 됨 -->
 								<tr>
 									<th>교수 번호</th>
 									<th>교수 이름</th>

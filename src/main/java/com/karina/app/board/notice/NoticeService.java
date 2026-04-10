@@ -18,7 +18,7 @@ public class NoticeService {
 	public List<NoticeDTO> list(Pager pager) throws Exception{
 		Map<String,Long> map=new HashMap<>();
 		pager.makePageNumber(noticeMapper.getCount());
-		pager.makerRowNumber();
+		
 	
 		
 		

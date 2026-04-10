@@ -14,13 +14,13 @@ class ProfessorMapperTest {
 	@Autowired
 	private ProfessorMapper professorMapper;
 	
-	//@Test
-	void testList() throws Exception{
-		List<ProfessorDTO> ar=professorMapper.list();
-		
-		assertNotEquals(0, ar.size());
-		System.out.println(ar.size());
-	}
+//	//@Test
+//	void testList() throws Exception{
+//		List<ProfessorDTO> ar=professorMapper.list();
+//		
+//		assertNotEquals(0, ar.size());
+//		System.out.println(ar.size());
+//	}
 
 	//@Test
 	void testDetail() throws Exception{
