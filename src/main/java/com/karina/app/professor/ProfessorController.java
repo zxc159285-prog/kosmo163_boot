@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.karina.app.page.Pager;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -19,8 +22,8 @@ public class ProfessorController {
 	private ProfessorService professorService;
 	
 	@GetMapping("list")
-	public String list(Model model) throws Exception {
-		List<ProfessorDTO> ar =professorService.list();
+	public String list(Pager pager,Model model) throws Exception {
+		List<ProfessorDTO> ar =professorService.list(pager);
 		
 		model.addAttribute("list", ar);
 		

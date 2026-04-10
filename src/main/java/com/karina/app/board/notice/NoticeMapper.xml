@@ -7,12 +7,17 @@
   <!-- 네임스페이스에 얘를 사용할 클래스명을 풀패키지명으로 작성한다 FQDN(정규화된 도메인이름) -->
   <mapper namespace="com.karina.app.board.notice.NoticeMapper">
  <!--  리스트 -->
-  <select id="list" resultType="NoticeDTO">
+ <select id="getCount" resultType="Long">
+	 SELECT COUNT(NOTICE_NO) FROM TB_NOTICE
+ </select>
+ 
+  <select id="list" resultType="NoticeDTO" parameterType="Pager">
   <![CDATA[
-  SELECT NOTICE_NO,TITLE,WRITER,CREATEDATE,HIT FROM TB_NOTICE 
-  WHERE NOTICE_NO >(SELECT MAX(NOTICE_NO)-10 FROM TB_NOTICE) 
-  AND NOTICE_NO <= (SELECT MAX(NOTICE_NO)FROM TB_NOTICE) 
-  ORDER BY NOTICE_NO DESC
+ 	SELECT * FROM
+		(SELECT ROWNUM R,T.* FROM
+			(SELECT * FROM TB_NOTICE ORDER BY NOTICE_NO DESC) T
+		) 
+	WHERE R BETWEEN #{first} AND #{last}
   ]]>
   </select>
   <!-- 디테일 -->

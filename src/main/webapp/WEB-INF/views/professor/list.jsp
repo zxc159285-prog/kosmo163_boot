@@ -45,7 +45,27 @@
 								</c:forEach>
 							</tbody>
 						</table>
+												<div>
+						<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item ${pager.pre?'':'disabled'}">
+      <a class="page-link" href="./list?page=${pager.pre?pager.start-1:pager.start}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <c:forEach begin="${pager.start}" end="${pager.end}" var="i">
+								<li class="page-item"><a class="page-link" href="./list?page=${i}">${i}</a></li>
+							</c:forEach>
+    <li class="page-item ${pager.next?'':'disabled'}">
+      <a class="page-link" href="./list?page=${pager.next?pager.end+1:pager.end}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 						
+							
+						</div>
 						<div>
 							<a href ="./create">교수등록</a>
 						</div>

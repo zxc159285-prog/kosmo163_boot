@@ -1,13 +1,18 @@
 package com.karina.app.board.notice;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.karina.app.page.Pager;
+
 @Mapper
 public interface NoticeMapper {
+	
+	public Long getCount()throws Exception;
 	//list
-	public abstract List<NoticeDTO> list() throws Exception;
+	public abstract List<NoticeDTO> list(Pager pager) throws Exception;
 	//detail
 	public abstract NoticeDTO detail(NoticeDTO noticeDTO) throws Exception;
 	//create

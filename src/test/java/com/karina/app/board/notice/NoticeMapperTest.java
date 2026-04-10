@@ -13,14 +13,20 @@ class NoticeMapperTest {
 
 	@Autowired
 	private NoticeMapper noticeMapper;
-
-	//@Test
-	void testList() throws Exception {
-		List<NoticeDTO> ar = noticeMapper.list();
-
-		assertNotEquals(0, ar.size());
-
+	
+	@Test
+	void testgetCount() throws Exception{
+		Long result = noticeMapper.getCount();
+		assertNotEquals(0, result);;
 	}
+
+//	@Test
+//	void testList() throws Exception {
+//		List<NoticeDTO> ar = noticeMapper.list();
+//
+//		assertNotEquals(0, ar.size());
+//
+//	}
 
 	//@Test
 	void testCreate() throws Exception {

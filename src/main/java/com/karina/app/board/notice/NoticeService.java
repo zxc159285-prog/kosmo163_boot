@@ -1,9 +1,13 @@
 package com.karina.app.board.notice;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.karina.app.page.Pager;
 
 @Service
 public class NoticeService {
@@ -11,9 +15,19 @@ public class NoticeService {
 	@Autowired
 	private NoticeMapper noticeMapper;
 	
-	public List<NoticeDTO> list() throws Exception{
-		return noticeMapper.list();
+	public List<NoticeDTO> list(Pager pager) throws Exception{
+		Map<String,Long> map=new HashMap<>();
+		pager.makePageNumber(noticeMapper.getCount());
+		pager.makerRowNumber();
+	
+		
+		
+		return noticeMapper.list(pager);
+		
+		
 	}
+	
+	
 	
 	public int create(NoticeDTO noticeDTO) throws Exception{
 		return noticeMapper.create(noticeDTO);
