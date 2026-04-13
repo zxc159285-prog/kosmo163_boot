@@ -10,6 +10,8 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Pager {
+	//검색어를 받을 변수
+	private String search;
 	//한 페이지에 보여줄 글의 갯수
 	private Long perPage;
 	//페이지번호
@@ -26,6 +28,14 @@ public class Pager {
 	private boolean pre;
 	//다음블록 유무
 	private boolean next;
+	
+	public String getSearch() {
+		if(this.search==null) {
+			this.search="";
+		}
+		
+		return this.search;
+	}
 	
 	public Long getPerPage(){
 		if(this.perPage==null || this.perPage%5!=0) {
@@ -53,11 +63,13 @@ public class Pager {
 	public void makePageNumber(Long totalCount)throws Exception{
 		
 		//총 페이지 구하기
-		 Long totalPage=totalCount/this.getPerPage();
-		 if(totalCount%this.perPage !=0) {
-			 totalPage++;
-		 }
-		 if(page>totalPage) {
+//		 Long totalPage=totalCount/this.getPerPage();
+//		 if(totalCount%this.perPage !=0) {
+//			 totalPage++;
+//		 }
+		
+		Long totalPage=(long)(Math.ceil(totalCount/(double)this.getPerPage()));
+		 if(this.getPage()>totalPage) {
 			 this.page=totalPage;
 		 }
 		 
