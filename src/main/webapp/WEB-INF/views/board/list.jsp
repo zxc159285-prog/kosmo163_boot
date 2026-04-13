@@ -58,7 +58,7 @@
 								
 									<tr>
 										<td>${d.noticeNo}</td>
-										<td><a href="./detail?NoticeNo=${d.noticeNo}">${d.title}</a></td>
+										<td><a href="./detail?noticeNo=${d.noticeNo}">${d.title}</a></td>
 										<td>${d.createdate}</td>
 									
 									</tr>

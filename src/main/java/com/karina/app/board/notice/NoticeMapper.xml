@@ -36,7 +36,7 @@
   </select>
   <!-- 디테일 -->
   <select id="detail" parameterType="NoticeDTO" resultType="NoticeDTO">
-  
+  SELECT * FROM TB_NOTICE WHERE NOTICE_NO=#{noticeNo}
   </select>
   <!-- 크리에이트 -->
   <insert id="create" parameterType="NoticeDTO">

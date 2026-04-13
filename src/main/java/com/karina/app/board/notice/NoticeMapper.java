@@ -11,7 +11,7 @@ import com.karina.app.page.Pager;
 public interface NoticeMapper {
 	
 	
-	public Long getCount(Pager pager)throws Exception;
+	Long getCount(Pager pager)throws Exception;
 	//list
 	public abstract List<NoticeDTO> list(Pager pager) throws Exception;
 	//detail

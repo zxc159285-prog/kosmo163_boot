@@ -9,8 +9,8 @@
  <sql id="search">
   WHERE
   <choose>
-  <when test="kind=='v2'">CONTENTS</when>
-  <when test="kind=='v3'">WRITER</when>
+  <when test="kind=='v2'">DEPARTMENT_NAME</when>
+  <when test="kind=='v3'">CATEGORY</when>
   <otherwise>DEPARTMENT_NO</otherwise>
   
   </choose>
@@ -22,6 +22,18 @@
 	 SELECT COUNT(DEPARTMENT_NO) FROM TB_DEPARTMENT
 	 <include refid="search"></include>
  </select>
+ 
+  <select id="list" resultType="DepartmentDTO" parameterType="Pager">
+  
+ 	SELECT * FROM
+		(SELECT ROWNUM R,T.* FROM
+			(SELECT * FROM TB_DEPARTMENT 
+		 <include refid="search"></include>
+			ORDER BY DEPARTMENT_NO DESC) T
+		) 
+	WHERE R BETWEEN #{first} AND #{last}
+  
+  </select>
    <!-- 파라미터타입을 써야 #{} 사용가능 -->
   <select id="detail" parameterType="DepartmentDTO" resultType="DepartmentDTO">
   <!-- String,primitiveType 은 DAO에서 보낸 변수명을 #{변수명을 작성} -->

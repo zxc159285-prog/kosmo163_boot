@@ -8,8 +8,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="/WEB-INF/views/temp/head_css.jsp"></c:import>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs4.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs4.min.js"></script>
+   <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
+    
 </head>
 <body id="page-top">
 	<div id="wrapper">
@@ -21,32 +21,29 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">교수 추가하기</h1>
+					<h1 class="h3 mb-4 text-gray-800">공지 작성</h1>
 					<div>
-					<form action="./create" method="post">
+					<form action="./create" method="post" enctype="multipart/form-data">
 						  <div class="form-group">
-						    <label for="professorNo">교수 번호</label>
-						    <input type="text" name="professorNo" class="form-control" id="professorNo">
+						    <label for="title">제목</label>
+						    <input type="text" name="title" class="form-control" id="title">
 						  </div>
 						  
 						  <div class="form-group">
-						    <label for="professorName">교수 이름</label>
-						    <input type="text" name="professorName" class="form-control" id="professorName">
+						    <label for="writer">작성자</label>
+						    <input type="text" name="writer" class="form-control" id="writer">
+						  </div>
+											 										 
+						  <div class="form-group">
+						    <label for="contents">내용</label>
+						    <textarea rows="15" cols="60" name="contents" class="form-control" id="contents"></textarea>
+						  </div>
+						  <div class="form-group">
+						  	<label>첨부파일</label>
+						  	<input type="file" name="attach" class="form-control">
 						  </div>
 						  
-						  <div class="form-group">
-						    <label for="professorSsn">교수 주민등록번호</label>
-						    <input type="text" name="professorSsn" class="form-control" id="professorSsn">
-						  </div>
-						  <div class="form-group">
-						    <label for="professorAddress">교수 주소</label>
-						    <input type="text" name="professorAddress" class="form-control" id="professorAddress">
-						  </div>
-						  <div class="form-group">
-						    <label for="departmentNo">부서 번호</label>
-						    <input type="text" name="departmentNo" class="form-control" id="departmentNo">
-						  </div>
-						 
+						  
 						  <button type="submit" class="btn btn-primary">저장하기</button>
 						
 					</form>
@@ -62,5 +59,13 @@
 	</div>
 	<!-- End wrapper -->
 	<c:import url="/WEB-INF/views/temp/footer_script.jsp"></c:import>
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
+	   <script>
+      $('#contents').summernote({
+        placeholder: '내용을 작성하세요',
+        tabsize: 2,
+        height: 100
+      });
+    </script>
 </body>
 </html>

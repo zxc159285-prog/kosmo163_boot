@@ -37,7 +37,7 @@
 								<c:forEach items="${list}" var="d">  <!-- 포이치 반복문 돌리는것 리스트에서꺼낸걸 d라는변수에 담자-->
 								
 									<tr>
-										<td>${d.departmentno}</td>
+										<td>${d.departmentNo}</td>
 										<td><a href="./detail?departmentNo=${d.departmentNo}">${d.departmentName}</a></td>
 										<td>${d.category}</td>
 										
