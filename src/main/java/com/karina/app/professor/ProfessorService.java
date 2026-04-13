@@ -15,7 +15,7 @@ public class ProfessorService {
 	private ProfessorMapper professorDAO;
 	
 	 public List<ProfessorDTO> list(Pager pager) throws Exception {
-		 pager.makePageNumber(professorDAO.getCount());
+		 pager.makePageNumber(professorDAO.getCount(pager));
 		 pager.makerRowNumber();
 		 
 		return professorDAO.list(pager);

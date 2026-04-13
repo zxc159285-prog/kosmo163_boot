@@ -23,6 +23,18 @@
 					<!-- 내용 담는공간 -->
 					<div class="row justify-content-center">
 					<div class="col-6">
+					
+					<div>
+					<form action="./list" method="get">
+					<div class="input-group mb-3">
+					  <div class="input-group-prepend">
+					     <input type="text" name="search" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+					  </div>
+					  <button class="btn btn-outline-secondary" type="submit" id="button-addon1">검색</button>
+					 
+					</div>
+					</form>
+					</div>
 						<table class="table">
 							<thead class="thead-dark">  <!-- 제목은 힌번 나오면 됨 -->
 								<tr>
@@ -49,15 +61,15 @@
 						<nav aria-label="Page navigation example">
   <ul class="pagination">
     <li class="page-item ${pager.pre?'':'disabled'}">
-      <a class="page-link" href="./list?page=${pager.pre?pager.start-1:pager.start}" aria-label="Previous">
+      <a class="page-link" href="./list?page=${pager.pre?pager.start-1:pager.start}&search=${pager.search}&kind=${pager.kind}" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
     <c:forEach begin="${pager.start}" end="${pager.end}" var="i">
-								<li class="page-item"><a class="page-link" href="./list?page=${i}">${i}</a></li>
+								<li class="page-item"><a class="page-link" href="./list?page=${i}&search=${pager.search}&kind=${pager.kind}">${i}</a></li>
 							</c:forEach>
     <li class="page-item ${pager.next?'':'disabled'}">
-      <a class="page-link" href="./list?page=${pager.next?pager.end+1:pager.end}" aria-label="Next">
+      <a class="page-link" href="./list?page=${pager.next?pager.end+1:pager.end}&search=${pager.search}&kind=${pager.kind}" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>

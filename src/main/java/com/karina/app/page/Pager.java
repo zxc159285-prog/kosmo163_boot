@@ -10,6 +10,8 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Pager {
+	
+	private String kind;
 	//검색어를 받을 변수
 	private String search;
 	//한 페이지에 보여줄 글의 갯수

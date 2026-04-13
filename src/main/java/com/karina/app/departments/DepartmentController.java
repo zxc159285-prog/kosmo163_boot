@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.karina.app.page.Pager;
+
 @Controller
 @RequestMapping("/department/*")
 public class DepartmentController {
@@ -18,8 +20,8 @@ public class DepartmentController {
 	private DepartmentService departmentService;
 	
 	@GetMapping("list")
-	public String list(Model model) throws Exception {
-		List<DepartmentDTO> ar = departmentService.list();
+	public String list(Pager pager,Model model) throws Exception {
+		List<DepartmentDTO> ar = departmentService.list(pager);
 		
 		//request와 비슷한 역할, 스프링이 제공함 모델 인터페이스가 임포트되야함
 		model.addAttribute("list", ar);

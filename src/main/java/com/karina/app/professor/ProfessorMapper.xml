@@ -5,16 +5,20 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.karina.app.professor.ProfessorMapper">
+  <sql id="search">WHERE PROFESSOR_NAME LIKE '%'||#{search}||'%'</sql>
   	<select id="getCount" resultType="Long">
 	 SELECT COUNT(PROFESSOR_NO) FROM TB_PROFESSOR
+	 <include refid="search"></include>
 	 </select>
   	<select id="list" resultType="ProfessorDTO" parameterType="Pager">
-  	<![CDATA[
+  	
   	SELECT * FROM
 		(SELECT ROWNUM R,T.* FROM 
-			(SELECT * FROM TB_PROFESSOR ORDER BY PROFESSOR_NO DESC) T)
+			(SELECT * FROM TB_PROFESSOR 
+			<include refid="search"></include>
+			ORDER BY PROFESSOR_NO DESC) T)
  	WHERE R BETWEEN #{first} AND #{last}
- 	]]>
+ 
   	</select>
   	<select id="detail" parameterType="ProfessorDTO" resultType="ProfessorDTO">
   	SELECT * FROM TB_PROFESSOR 

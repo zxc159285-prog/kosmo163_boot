@@ -13,7 +13,7 @@ import com.karina.app.page.Pager;
 @Mapper
 public interface ProfessorMapper {
 	
-	Long getCount()throws Exception;
+	Long getCount(Pager pager)throws Exception;
 	
 	public abstract List<ProfessorDTO> list(Pager pager) throws Exception;
 	

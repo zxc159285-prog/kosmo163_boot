@@ -23,12 +23,20 @@
 					<!-- 내용 담는공간 -->
 					<div class="row justify-content-center">
 					<div class="col-8">
-					<div>
+					
 					<!-- 검색 폼 -->
+					<div>
 					<form action="./list" method="get">
 					<div class="input-group mb-3">
 					  <div class="input-group-prepend">
-					     <input type="text" name="search" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+					  <select name="kind" class="custom-select">
+					  <option ${pager.kind eq 'v1'?'selected':''} value="v1" class="dropdown-item">Title</option>
+					  <option ${pager.kind eq 'v2'?'selected':''} value="v2" class="dropdown-item">Contents</option>
+					  <option ${pager.kind eq 'v3'?'selected':''} value="v3" class="dropdown-item">Writer</option>
+					  </select>
+					  
+					  
+					     <input type="text" value="${pager.search}" name="search" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
 					  </div>
 					  <button class="btn btn-outline-secondary" type="submit" id="button-addon1">검색</button>
 					 
