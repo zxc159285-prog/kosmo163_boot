@@ -32,7 +32,7 @@ public class NoticeController {
 	return "board/create";
 	}
 	@PostMapping("create")
-	public String create(NoticeDTO noticeDTO,@RequestParam("attach") MultipartFile attach) throws Exception {
+	public String create(NoticeDTO noticeDTO,@RequestParam("attach") MultipartFile [] attach) throws Exception {
 		//int result=noticeService.create(noticeDTO);
 		int result = noticeService.create(noticeDTO,attach);
 		return "redirect:./list";

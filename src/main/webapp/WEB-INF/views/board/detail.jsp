@@ -28,10 +28,12 @@
 									<div>제목 : ${detail.title}</div>
 									<div>작성자 : ${detail.writer}</div>
 									<div>
-									
-									${detail.contents}
-								
-										
+										${detail.contents}
+									</div>
+									<div>
+										<c:forEach items="${detail.list}" var="f">
+										<h4><img style="width: 200px; height: auto; vertical-align: middle; margin-right: 10px;" src="/files/notice/${f.fileName}"> ${f.oriName}</h4>
+										</c:forEach>
 									</div>
 					
 						</div>

@@ -9,7 +9,7 @@ import com.karina.app.page.Pager;
 public interface DepartmentMapper {
 	//인터페이스의 매서드는 무조건 public abstract
 	//DAO에서 하는일은 CRUD
-	Long getCount(Pager pager)throws Exception;
+	public Long getCount(Pager pager)throws Exception;
 	//list
 	public abstract List<DepartmentDTO> list(Pager pager)throws Exception;
 	//detail

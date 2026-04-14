@@ -3,11 +3,14 @@ package com.karina.app.board.notice;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @SpringBootTest
 class NoticeMapperTest {
 
@@ -15,9 +18,15 @@ class NoticeMapperTest {
 	private NoticeMapper noticeMapper;
 	
 	@Test
-	void testgetCount() throws Exception{
-		Long result = noticeMapper.getCount();
-		assertNotEquals(0, result);;
+	void detailTest()throws Exception{
+		NoticeDTO noticeDTO=new NoticeDTO();
+		noticeDTO.setNoticeNo(354L);
+		
+		noticeDTO= noticeMapper.detail(noticeDTO);
+		
+		
+		log.info("Map : {}",noticeDTO);
+		assertNotNull(noticeDTO);
 	}
 
 //	@Test
