@@ -32,7 +32,7 @@
 									</div>
 									<div>
 										<c:forEach items="${detail.list}" var="f">
-										<h4><img style="width: 200px; height: auto; vertical-align: middle; margin-right: 10px;" src="/files/notice/${f.fileName}"> ${f.oriName}</h4>
+										<h4><img class="col-10"src="/files/notice/${f.fileName}"> ${f.oriName}</h4>
 										</c:forEach>
 									</div>
 					
