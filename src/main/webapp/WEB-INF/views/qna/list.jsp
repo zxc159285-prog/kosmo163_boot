@@ -58,7 +58,9 @@
 								
 									<tr>
 										<td>${d.noticeNo}</td>
-										<td><a href="./detail?noticeNo=${d.noticeNo}">${d.title}</a></td>
+										<td><a href="./detail?noticeNo=${d.noticeNo}">${d.title}
+											<c:forEach begin="1" end="${d.depth}">--</c:forEach>
+											</a></td>
 										<td>${d.createdate}</td>
 									
 									</tr>

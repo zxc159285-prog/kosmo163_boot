@@ -26,10 +26,81 @@
 		(SELECT ROWNUM R,T.* FROM
 			(SELECT * FROM TB_QNA 
 		 <include refid="search"></include>
-			ORDER BY NOTICE_NO DESC) T
+			ORDER BY REF DESC, STEP ASC) T
 		) 
 	WHERE R BETWEEN #{first} AND #{last}
   
   </select>
   
+  <insert id="createFile" parameterType="NoticeFileDTO">
+  
+  INSERT INTO TB_QNAFILE
+  VALUES (TB_QNA_SEQ.NEXTVAL,#{noticeNo},#{fileName},#{oriName})
+  </insert>
+  
+  
+  <insert id="create" parameterType="QnaDTO" >
+  <selectKey order="BEFORE" keyProperty="noticeNo" resultType="Long">
+  SELECT TB_QNA_SEQ.NEXTVAL FROM DUAL
+  </selectKey>
+  INSERT INTO TB_QNA
+  VALUES
+ (
+ #{noticeNo},
+ #{title},
+ #{contents},
+ #{writer},
+ SYSDATE,
+ 0,
+ <if test="ref !=null">
+ 	#{ref},
+ </if>
+ <if test="ref ==null">
+  #{noticeNo},
+ </if>
+#{step},
+#{depth}
+ )
+  </insert>
+
+  
+  <select id="detail" parameterType="QnaDTO" resultMap="detailResult">
+  SELECT * FROM TB_QNA Q LEFT JOIN TB_QNAFILE tq USING (NOTICE_NO)
+ 	WHERE NOTICE_NO=#{noticeNo}
+  </select>
+   <resultMap type="QnaDTO" id="detailResult">
+  <!-- 프라이머리키를 id에 넣는다 -->
+  <id column="NOTICE_NO" property="noticeNo"/>
+  <!-- 프라이머리키를 제외한 나머지 -->
+  <result column="TITLE" property="title"/>
+  <result column="CONTENTS" property="contents"/>
+  <result column="WRITER" property="writer"/>
+  <result column="CREATEDATE" property="createdate"/>
+  <result column="HIT" property="hit"/>
+  <result column="REF" property="ref"/>
+  <result column="STEP" property="step"/>
+  <result column="DEPTH" property="depth"/>
+ 	
+  <!-- 1:1일떼-->
+  <!-- <association property="" javaType="">
+ 		<id/>
+ 		<result/>
+	 </association>  -->
+  <!-- 1:N -->
+  <collection property="list" javaType="java.util.List" ofType="QnaFileDTO">
+  <id column="FILE_NO" property="fileNo"/>
+  
+  <result column="FILE_NAME" property="fileName"/>
+  <result column="ORI_NAME" property="oriName"/>
+  </collection>
+  
+  
+  </resultMap>
+  
+  <update id="replyUpdate" parameterType="QnaDTO">
+  UPDATE TB_QNA
+  SET STEP=STEP+1
+  WHERE REF=#{ref} AND STEP>#{step}
+      
+  </update>
   </mapper>

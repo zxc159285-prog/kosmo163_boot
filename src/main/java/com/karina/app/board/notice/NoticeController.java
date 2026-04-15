@@ -43,4 +43,7 @@ public class NoticeController {
 		model.addAttribute("detail", noticeDTO);
 		return "board/detail";
 	}
+	
+
+	
 }
